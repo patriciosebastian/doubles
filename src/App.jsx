@@ -17,14 +17,9 @@ function App() {
     startNewGame();
 
     const storedHighScore = localStorage.getItem('highScore');
-    const storedCustomStart = localStorage.getItem('customStart');
 
     if (storedHighScore) {
       setHighScore(parseInt(storedHighScore, 10));
-    }
-
-    if (storedCustomStart) {
-      setCustomStart(storedCustomStart);
     }
   });
 
@@ -142,13 +137,11 @@ function App() {
     e.preventDefault();
     const customNumber = parseInt(customStart);
     setNumber(customNumber);
-    localStorage.setItem('customStart', customNumber);
   };
 
   const clearCustomStart = () => {
     setCustomStart('');
     setNumber(getRandomStartingNumber());
-    localStorage.removeItem('customStart');
   };
 
   // Timer color based on time left
