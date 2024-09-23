@@ -204,7 +204,9 @@ function App() {
         {gameOver ? (
           <div className="text-center">
             <p className="text-red-500 text-lg sm:text-xl mb-4">Game Over! You doubled <span className="font-bold">{doublesCount}</span> times.</p>
-            <p className="text-lg sm:text-xl">The correct answer was: <span className="font-bold">{correctAnswer}</span></p>
+            <p className="text-lg sm:text-xl">The correct answer was:<br />
+              <span className="font-bold">{correctAnswer}</span>
+            </p>
             <p className="text-lg sm:text-xl mb-4">Your highest score: {highScore}</p>
             <button className="bg-blue-500 text-white px-4 py-2 rounded mr-4 mt-4 sm:mt-0" onClick={startNewGame}>
               Start New Game
