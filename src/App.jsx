@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [number, setNumber] = useState(null);
@@ -10,6 +10,7 @@ function App() {
   const [timerStarted, setTimerStarted] = useState(false);
   const [customStart, setCustomStart] = useState('');
   const [settingsVisible, setSettingsVisible] = useState(false);
+  const settingsRef = useRef(null);
 
   useEffect(() => {
     startNewGame();
@@ -36,6 +37,27 @@ function App() {
       return () => clearInterval(interval);
     }
   }, [gameOver, timerStarted]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+        setSettingsVisible(false);
+      }
+    };
+
+    if (settingsVisible) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [settingsVisible]);
 
   const startNewGame = () => {
     // Reset state and figure out starting number
@@ -148,7 +170,7 @@ function App() {
           </button>
     
           {settingsVisible && (
-            <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64">
+            <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64" ref={settingsRef}>
               <label className="block text-base">Choose a fixed starting number (2-100):</label>
               <input
                 type="number"
