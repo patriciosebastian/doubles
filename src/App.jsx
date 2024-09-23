@@ -268,7 +268,7 @@ function App() {
               </button>
               <div className="timer-modes mt-4">
                 <label className="block text-lg md:text-xl dark:text-[#242424]">Timer Mode:</label>
-                <div>
+                <div className="dark:text-[#242424]">
                   <label className="block">
                     <input
                       type="radio"
