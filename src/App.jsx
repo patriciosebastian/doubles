@@ -36,12 +36,16 @@ function App() {
   const applyMode = (mode) => {
     if (mode === 'easy') {
       setTimer(10);
+      getTimeColor();
     } else if (mode === 'medium') {
       setTimer(8);
+      getTimeColor();
     } else if (mode === 'hard') {
       setTimer(6);
+      getTimeColor();
     } else if (mode === 'evil') {
       setTimer(4);
+      getTimeColor();
     }
   };
 
