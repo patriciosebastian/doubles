@@ -27,6 +27,7 @@ function App() {
       setMode(storedMode);
       applyMode(storedMode);
     } else {
+      setMode('hard');
       applyMode('hard');
     }
 
