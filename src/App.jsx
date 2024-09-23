@@ -245,7 +245,7 @@ function App() {
           </button>
     
           {settingsVisible && (
-            <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64" ref={settingsRef}>
+            <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-64 lg:w-[23rem]" ref={settingsRef}>
               <label className="block text-lg md:text-xl dark:text-[#242424]">Choose a fixed starting number:</label>
               <input
                 type="number"
