@@ -12,15 +12,38 @@ function App() {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const settingsRef = useRef(null);
   const [correctAnswer, setCorrectAnswer] = useState(null);
+  const [mode, setMode] = useState(null);
+  const [gameModeAtEnd, setGameModeAtEnd] = useState(null);
 
   useEffect(() => {
-    startNewGame();
-
     const storedHighScore = localStorage.getItem('highScore');
+    const storedMode = localStorage.getItem('mode');
+
     if (storedHighScore) {
       setHighScore(parseInt(storedHighScore, 10));
     }
+
+    if (storedMode) {
+      setMode(storedMode);
+      applyMode(storedMode);
+    } else {
+      applyMode('hard');
+    }
+
+    startNewGame();
   }, []);
+
+  const applyMode = (mode) => {
+    if (mode === 'easy') {
+      setTimer(10);
+    } else if (mode === 'medium') {
+      setTimer(8);
+    } else if (mode === 'hard') {
+      setTimer(6);
+    } else if (mode === 'evil') {
+      setTimer(4);
+    }
+  };
 
   // Timer logic
   useEffect(() => {
@@ -29,6 +52,7 @@ function App() {
         setTimer((prevTimer) => {
           if (prevTimer === 0) {
             setCorrectAnswer(number * 2);
+            setGameModeAtEnd(mode);
             setGameOver(true);
             return 0;
           }
@@ -38,7 +62,7 @@ function App() {
 
       return () => clearInterval(interval);
     }
-  }, [gameOver, timerStarted, number]);
+  }, [gameOver, timerStarted, number, mode]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -68,9 +92,10 @@ function App() {
     setDoublesCount(0);
     setInputValue('');
     setGameOver(false);
-    setTimer(6); // Reset timer
+    applyMode(mode);
     setTimerStarted(false);
     setCorrectAnswer(null);
+    setGameModeAtEnd(null);
   };
 
   const getRandomStartingNumber = () => {
@@ -92,10 +117,11 @@ function App() {
       setNumber(doubledValue);
       setDoublesCount(doublesCount + 1);
       setInputValue('');
-      setTimer(6); // Reset timer after correct answer
+      applyMode(mode);
       setTimerStarted(true); // Timer restarts after correct answer
     } else {
       setCorrectAnswer(doubledValue);
+      setGameModeAtEnd(mode);
       setGameOver(true);
       if (doublesCount > highScore) {
         setHighScore(doublesCount);
@@ -104,12 +130,36 @@ function App() {
     }
   };
 
+  const handleModeChange = (mode) => {
+    setMode(mode);
+    applyMode(mode);
+    localStorage.setItem('mode', mode);
+  };
+
   const handleShareScore = () => {
     const successEmoji = "✅";
     const streakEmoji = "🧠";
     const failureEmoji = "💥";
+    const easyModeEmoji = "⏱️⏱️⏱️";
+    const mediumModeEmoji = "⏱️⏱️";
+    const hardModeEmoji = "⏱️";
+    const evilModeEmoji = "👿";
+
+    let timerModeEmoji;
+
+    // Set the emoji based on the selected mode
+    if (gameModeAtEnd === 'easy') {
+      timerModeEmoji = easyModeEmoji;
+    } else if (gameModeAtEnd === 'medium') {
+      timerModeEmoji = mediumModeEmoji;
+    } else if (gameModeAtEnd === 'hard') {
+      timerModeEmoji = hardModeEmoji;
+    } else if (gameModeAtEnd === 'evil') {
+      timerModeEmoji = evilModeEmoji;
+    }
 
     let shareMessage = `I doubled numbers ${doublesCount} times in Doubles!\n`;
+    shareMessage += `${timerModeEmoji}\n`;
 
     for (let i = 0; i < doublesCount; i++) {
       shareMessage += successEmoji;
@@ -145,11 +195,31 @@ function App() {
     setNumber(getRandomStartingNumber());
   };
 
-  // Timer color based on time left
+  // Timer color based on mode and time left
   const getTimeColor = () => {
-    if (timer > 4) return 'text-green-500';
-    if (timer > 2) return 'text-yellow-500';
-    return 'text-red-500';
+    if (mode === 'easy') {
+      if (timer > 5) return 'text-green-500';
+      if (timer > 2) return 'text-yellow-500';
+      return 'text-red-500';
+    }
+
+    if (mode === 'medium') {
+      if (timer > 5) return 'text-green-500';
+      if (timer > 2) return 'text-yellow-500';
+      return 'text-red-500';
+    }
+
+    if (mode === 'hard') {
+      if (timer > 3) return 'text-green-500';
+      if (timer > 2) return 'text-yellow-500';
+      return 'text-red-500';
+    }
+
+    if (mode === 'evil') {
+      if (timer > 2) return 'text-green-500';
+      if (timer > 0) return 'text-yellow-500';
+      return 'text-red-500';
+    }
   }
 
   // Toggle settings visibility
@@ -171,7 +241,7 @@ function App() {
     
           {settingsVisible && (
             <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64" ref={settingsRef}>
-              <label className="block text-base dark:text-[#242424]">Choose a fixed starting number:</label>
+              <label className="block text-lg md:text-xl dark:text-[#242424]">Choose a fixed starting number:</label>
               <input
                 type="number"
                 value={customStart}
@@ -191,6 +261,51 @@ function App() {
               >
                 Clear Starting Number
               </button>
+              <div className="timer-modes mt-4">
+                <label className="block text-lg md:text-xl dark:text-[#242424]">Timer Mode:</label>
+                <div>
+                  <label className="block">
+                    <input
+                      type="radio"
+                      value="easy"
+                      checked={mode === 'easy'}
+                      onChange={() => handleModeChange('easy')}
+                      className="mr-2"
+                    />
+                    Easy (10s)
+                  </label>
+                  <label className="block">
+                    <input
+                      type="radio"
+                      value="medium"
+                      checked={mode === 'medium'}
+                      onChange={() => handleModeChange('medium')}
+                      className="mr-2"
+                    />
+                    Medium (8s)
+                  </label>
+                  <label className="block">
+                    <input
+                      type="radio"
+                      value="hard"
+                      checked={mode === 'hard'}
+                      onChange={() => handleModeChange('hard')}
+                      className="mr-2"
+                    />
+                    Hard (6s - Default)
+                  </label>
+                  <label className="block">
+                    <input
+                      type="radio"
+                      value="evil"
+                      checked={mode === 'evil'}
+                      onChange={() => handleModeChange('evil')}
+                      className="mr-2"
+                    />
+                    Evil (4s)
+                  </label>
+                </div>
+              </div>
             </div>
           )}
         </div>
