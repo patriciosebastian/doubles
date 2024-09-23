@@ -171,7 +171,7 @@ function App() {
     
           {settingsVisible && (
             <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64" ref={settingsRef}>
-              <label className="block text-base">Choose a fixed starting number:</label>
+              <label className="block text-base dark:text-[#242424]">Choose a fixed starting number:</label>
               <input
                 type="number"
                 value={customStart}
