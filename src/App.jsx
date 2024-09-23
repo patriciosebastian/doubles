@@ -17,10 +17,16 @@ function App() {
     startNewGame();
 
     const storedHighScore = localStorage.getItem('highScore');
+    const storedCustomStart = localStorage.getItem('customStart');
+
     if (storedHighScore) {
       setHighScore(parseInt(storedHighScore, 10));
     }
-  }, []);
+
+    if (storedCustomStart) {
+      setCustomStart(storedCustomStart);
+    }
+  });
 
   // Timer logic
   useEffect(() => {
@@ -135,16 +141,14 @@ function App() {
   const handleCustomStartSubmit = (e) => {
     e.preventDefault();
     const customNumber = parseInt(customStart);
-    if (customNumber >= 2 && customNumber <= 100) {
-      setNumber(customNumber);
-    } else {
-      alert('Please enter a number between 2 and 100');
-    }
+    setNumber(customNumber);
+    localStorage.setItem('customStart', customNumber);
   };
 
   const clearCustomStart = () => {
     setCustomStart('');
     setNumber(getRandomStartingNumber());
+    localStorage.removeItem('customStart');
   };
 
   // Timer color based on time left
@@ -173,7 +177,7 @@ function App() {
     
           {settingsVisible && (
             <div className="mt-5 bg-gray-200 p-6 rounded absolute right-0 shadow-lg w-48 sm:w-56 md:w-64" ref={settingsRef}>
-              <label className="block text-base">Choose a fixed starting number (2-100):</label>
+              <label className="block text-base">Choose a fixed starting number:</label>
               <input
                 type="number"
                 value={customStart}
