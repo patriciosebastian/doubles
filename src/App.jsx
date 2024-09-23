@@ -230,6 +230,7 @@ function App() {
           </div>
         )}
       </div>
+      <footer className="text-center mt-8 text-stone-200 dark:text-stone-700">copyright 2024 Doubles by <a href="https://patriciosalazar.dev" target="_blank" className="text-stone-200 dark:text-stone-700">Patricio Salazar</a></footer>
     </>
   );
 }
