@@ -11,6 +11,7 @@ function App() {
   const [customStart, setCustomStart] = useState('');
   const [settingsVisible, setSettingsVisible] = useState(false);
   const settingsRef = useRef(null);
+  const [correctAnswer, setCorrectAnswer] = useState(null);
 
   useEffect(() => {
     startNewGame();
@@ -92,6 +93,7 @@ function App() {
       setTimer(6); // Reset timer after correct answer
       setTimerStarted(true); // Timer restarts after correct answer
     } else {
+      setCorrectAnswer(doubledValue);
       setGameOver(true);
       if (doublesCount > highScore) {
         setHighScore(doublesCount);
@@ -202,7 +204,8 @@ function App() {
         {gameOver ? (
           <div className="text-center">
             <p className="text-red-500 text-lg sm:text-xl mb-4">Game Over! You doubled <span className="font-bold">{doublesCount}</span> times.</p>
-            <p className="text-lg sm:text-xl">Your highest score: {highScore}</p>
+            <p className="text-lg sm:text-xl">The correct answer was: <span className="font-bold">{correctAnswer}</span></p>
+            <p className="text-lg sm:text-xl mb-4">Your highest score: {highScore}</p>
             <button className="bg-blue-500 text-white px-4 py-2 rounded mr-4 mt-4 sm:mt-0" onClick={startNewGame}>
               Start New Game
             </button>
