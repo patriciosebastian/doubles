@@ -13,5 +13,13 @@ export default {
       }
     },
   },
+  safelist: [
+    'outline-green-500',
+    'outline-yellow-500',
+    'outline-red-500',
+    'text-green-500',
+    'text-yellow-500',
+    'text-red-500',
+  ],
   plugins: [],
 }

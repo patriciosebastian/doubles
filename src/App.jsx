@@ -210,27 +210,27 @@ function App() {
   // Timer color based on mode and time left
   const getTimeColor = () => {
     if (mode === 'easy') {
-      if (timer > 5) return 'text-green-500';
-      if (timer > 2) return 'text-yellow-500';
-      return 'text-red-500';
+      if (timer > 5) return 'green-500';
+      if (timer > 2) return 'yellow-500';
+      return 'red-500';
     }
 
     if (mode === 'medium') {
-      if (timer > 5) return 'text-green-500';
-      if (timer > 2) return 'text-yellow-500';
-      return 'text-red-500';
+      if (timer > 5) return 'green-500';
+      if (timer > 2) return 'yellow-500';
+      return 'red-500';
     }
 
     if (mode === 'hard') {
-      if (timer > 3) return 'text-green-500';
-      if (timer > 2) return 'text-yellow-500';
-      return 'text-red-500';
+      if (timer > 3) return 'green-500';
+      if (timer > 1) return 'yellow-500';
+      return 'red-500';
     }
 
     if (mode === 'evil') {
-      if (timer > 2) return 'text-green-500';
-      if (timer > 0) return 'text-yellow-500';
-      return 'text-red-500';
+      if (timer > 2) return 'green-500';
+      if (timer > 0) return 'yellow-500';
+      return 'red-500';
     }
   }
 
@@ -323,7 +323,7 @@ function App() {
         </div>
       </div>
       <div className="container mx-auto p-4 text-center">
-        <p className={`text-5xl sm:text-6xl ${getTimeColor()}`}>{timer}s</p>
+        <p className={`text-5xl sm:text-6xl text-${getTimeColor()}`}>{timer}s</p>
         <p className="mb-24 text-gray-400 text-base sm:text-lg">Start typing</p>
 
         {gameOver ? (
@@ -349,7 +349,7 @@ function App() {
                 type="number"
                 value={inputValue}
                 onChange={handleInputChange}
-                className="border border-black p-4 rounded text-xl sm:text-3xl w-full"
+                className={`border border-black outline-${getTimeColor()} p-4 rounded text-xl sm:text-3xl w-full`}
                 placeholder="Enter your answer"
                 ref={inputRef}
               />
