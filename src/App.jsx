@@ -368,7 +368,7 @@ function App() {
                 type="number"
                 value={inputValue}
                 onChange={handleInputChange}
-                className={`border border-black outline-${getTimeColor()} p-4 rounded text-xl sm:text-3xl w-full`}
+                className={`border border-black outline-${getTimeColor()} focus:outline-${getTimeColor()} p-4 rounded text-xl sm:text-3xl w-full`}
                 placeholder="Enter your answer"
                 ref={inputRef}
               />
