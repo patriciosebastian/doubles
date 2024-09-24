@@ -284,7 +284,7 @@ function App() {
                       onChange={() => handleModeChange('easy')}
                       className="mr-2"
                     />
-                    Easy (10s)
+                    Easy (10s ⏱️⏱️⏱️)
                   </label>
                   <label className="block">
                     <input
@@ -294,7 +294,7 @@ function App() {
                       onChange={() => handleModeChange('medium')}
                       className="mr-2"
                     />
-                    Medium (8s)
+                    Medium (8s ⏱️⏱️)
                   </label>
                   <label className="block">
                     <input
@@ -304,7 +304,7 @@ function App() {
                       onChange={() => handleModeChange('hard')}
                       className="mr-2"
                     />
-                    Hard (6s - Default)
+                    Hard (6s ⏱️- Default)
                   </label>
                   <label className="block">
                     <input
@@ -314,7 +314,7 @@ function App() {
                       onChange={() => handleModeChange('evil')}
                       className="mr-2"
                     />
-                    Evil (4s)
+                    Evil (4s 👿)
                   </label>
                 </div>
               </div>
