@@ -14,6 +14,7 @@ function App() {
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [mode, setMode] = useState(null);
   const [gameModeAtEnd, setGameModeAtEnd] = useState(null);
+  const inputRef = useRef();
 
   useEffect(() => {
     const storedHighScore = localStorage.getItem('highScore');
@@ -101,6 +102,12 @@ function App() {
     setTimerStarted(false);
     setCorrectAnswer(null);
     setGameModeAtEnd(null);
+
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 0);
   };
 
   const getRandomStartingNumber = () => {
@@ -335,7 +342,7 @@ function App() {
           </div>
         ) : (
           <div className="text-center">
-            <p className="text-lg sm:text-2xl inline mr-4">Current Number: {number}</p>
+            <p className="text-lg sm:text-2xl inline mr-4">Current Number: <span className="font-semibold">{number}</span></p>
             <button className="bg-transparent mb-4 text-sm" onClick={startNewGame}>New Number</button>
             <form onSubmit={handleSubmit}>
               <input
@@ -344,6 +351,7 @@ function App() {
                 onChange={handleInputChange}
                 className="border border-black p-4 rounded text-xl sm:text-3xl w-full"
                 placeholder="Enter your answer"
+                ref={inputRef}
               />
             </form>
             <p className="mt-4 text-lg sm:text-xl">Streak: {doublesCount}</p>
