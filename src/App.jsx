@@ -33,6 +33,7 @@ function App() {
     }
 
     startNewGame();
+    // eslint-disable-next-line
   }, []);
 
   const applyMode = (mode) => {
@@ -70,6 +71,7 @@ function App() {
     }
   }, [gameOver, timerStarted, number, mode]);
 
+  // Toggle settings menu visibility
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (settingsRef.current && !settingsRef.current.contains(e.target)) {
@@ -90,6 +92,22 @@ function App() {
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [settingsVisible]);
+
+  // Start new game on 'Enter' key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (gameOver && e.key === 'Enter') {
+        startNewGame();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line
+  }, [gameOver]);
 
   const startNewGame = () => {
     // Reset state and figure out starting number
