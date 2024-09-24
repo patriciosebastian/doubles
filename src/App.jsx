@@ -357,6 +357,7 @@ function App() {
             <button className="bg-green-500 text-white px-4 py-2 rounded mt-4 sm:mt-0" onClick={handleShareScore}>
               Share Your Score
             </button>
+            <p className="text-left pl-4 w-fit text-stone-400 hidden md:block">Or Press Enter &#8629;</p>
           </div>
         ) : (
           <div className="text-center">
