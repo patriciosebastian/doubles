@@ -361,10 +361,10 @@ function App() {
             <p className="text-lg sm:text-xl mb-2">Your highest score: {highScore}</p>
             <details className="mb-20" onToggle={(e) => setIsDetailsOpen(e.target.open)}>
               <summary className="hover:cursor-pointer">Your Replay</summary>
-              <div className="border rounded bg-gray-100 text-black">
+              <div className="border rounded bg-gray-100 dark:bg-stone-700 dark:border-transparent text-black dark:text-white">
                 <div className="grid grid-rows-6 grid-flow-col gap-y-4">
                   {answers.map((answer, index) => (
-                    <div key={index} className="p-4 border-b border-gray-300">
+                    <div key={index} className="p-4 border-b border-gray-300 dark:border-gray-500">
                       {answer.isCorrect ? `✅ ${answer.value}` : `❌ ${answer.value}`}
                     </div>
                   ))}
