@@ -13,11 +13,12 @@ function App() {
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [mode, setMode] = useState(null);
   const [gameModeAtEnd, setGameModeAtEnd] = useState(null);
+  const [answers, setAnswers] = useState([]);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const settingsRef = useRef(null);
   const inputRef = useRef(null);
   const gearIconRef = useRef(null);
-  const [answers, setAnswers] = useState([]);
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+  const detailsRef = useRef(null);
 
   useEffect(() => {
     const storedHighScore = localStorage.getItem('highScore');
@@ -113,6 +114,29 @@ function App() {
       window.removeEventListener('keydown', handleKeyDown);
     };
     // eslint-disable-next-line
+  }, [gameOver]);
+
+  // Toggle Replay dropdown on space bar key press
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (gameOver && e.key === ' ') {
+        e.preventDefault();
+
+        if (detailsRef.current) {
+          if (detailsRef.current.open) {
+            detailsRef.current.removeAttribute('open');
+          } else {
+            detailsRef.current.setAttribute('open', true);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
   }, [gameOver]);
 
   const startNewGame = () => {
@@ -362,8 +386,9 @@ function App() {
               <span className="font-bold">{correctAnswer}</span>
             </p>
             <p className="text-lg sm:text-xl mb-2">Your highest score: {highScore}</p>
-            <details className="mb-20" onToggle={(e) => setIsDetailsOpen(e.target.open)}>
+            <details className="mb-20" onToggle={(e) => setIsDetailsOpen(e.target.open)} ref={detailsRef}>
               <summary className="hover:cursor-pointer">Your Replay</summary>
+              <small className="text-stone-400 dark:text-stone-600">you can toggle this dropdown with the space bar</small>
               <div className="border rounded bg-gray-100 dark:bg-stone-700 dark:border-transparent text-black dark:text-white">
                 <div className="grid grid-rows-6 grid-flow-col gap-y-4">
                   {answers.map((answer, index) => (
