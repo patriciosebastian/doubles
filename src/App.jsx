@@ -104,9 +104,12 @@ function App() {
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    const timeoutId = setTimeout(() => {
+      window.addEventListener('keydown', handleKeyDown);
+    }, 1000);
 
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener('keydown', handleKeyDown);
     };
     // eslint-disable-next-line
