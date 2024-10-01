@@ -425,6 +425,22 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Adsterra Scripts */}
+      <div className="w-fit h-fit absolute left-0 bottom-4">
+        <script type="text/javascript">
+        	atOptions = {`
+        		key : 'fbeb6295875ba7c0edb04d0821c94de1',
+        		format : 'iframe',
+        		height : 50,
+        		width : 320,
+        		params : {}
+        	`};
+        </script>
+        <script type="text/javascript" src="//www.topcreativeformat.com/fbeb6295875ba7c0edb04d0821c94de1/invoke.js"></script>
+      </div>
+
+      {/* Footer */}
       <footer className={`text-center text-stone-200 dark:text-stone-700 ${isDetailsOpen ? 'static' : 'absolute'} bottom-2 left-0 right-0`}>copyright 2024 Doubles by <a href="https://patriciosalazar.dev" target="_blank" className="text-stone-200 dark:text-stone-700 underline hover:text-stone-400">Patricio Salazar</a></footer>
     </>
   );
