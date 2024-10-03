@@ -1,8 +1,7 @@
-# React + Vite
+## About The Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Built with React and Vite, Doubles offers a true SPA experience. It features an intuitive UI designed for focused, exciting gameplay. Race against the timer to double numbers as far as you can, starting from a fixed or random number. The game saves your high score using localStorage and features easy, medium, hard, and extra hard modes. When the game is over you can review all of your answers or simply click to share your results in a fun way. Keyboard shortcuts are available for quick and easy gameplay. Can you beat my high score of 13 doubles on hard mode? I dare you to try and let me know!
 
-Currently, two official plugins are available:
+## Built With
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Tailwind CSS | React | Vite
