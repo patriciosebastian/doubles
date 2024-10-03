@@ -387,7 +387,7 @@ function App() {
           <div className="text-center">
             <p className="text-red-500 text-lg sm:text-xl lg:text-2xl mb-14">Game Over! You doubled <span className="font-bold">{doublesCount}</span> times on <span className="font-bold">{gameModeAtEnd}</span></p>
             <p className="text-lg sm:text-xl">The correct answer was:<br />
-              <span className="font-bold">{correctAnswer}</span>
+              <span className="font-bold">{formatNumber(correctAnswer)}</span>
             </p>
             <p className="text-lg sm:text-xl mb-2">Your highest score: {highScore}</p>
             <details className="mb-20" onToggle={(e) => setIsDetailsOpen(e.target.open)} ref={detailsRef}>
