@@ -292,6 +292,10 @@ function App() {
     setSettingsVisible(!settingsVisible);
   };
 
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat().format(num);
+  };
+
   return (
     <>
       <div className="relative">
@@ -393,7 +397,7 @@ function App() {
                 <div className="grid grid-rows-6 grid-flow-col gap-y-4">
                   {answers.map((answer, index) => (
                     <div key={index} className="p-4 border-b border-gray-300 dark:border-gray-500">
-                      {answer.isCorrect ? `✅ ${answer.value}` : `❌ ${answer.value}`}
+                      {answer.isCorrect ? `✅ ${formatNumber(answer.value)}` : `❌ ${formatNumber(answer.value)}`}
                     </div>
                   ))}
                 </div>
@@ -409,7 +413,7 @@ function App() {
           </div>
         ) : (
           <div className="text-center">
-            <p className="text-lg sm:text-2xl inline mr-4">Current Number: <span className="font-semibold">{number}</span></p>
+            <p className="text-lg sm:text-2xl inline mr-4">Current Number: <span className="font-semibold">{formatNumber(number)}</span></p>
             <button className="bg-transparent mb-4 text-sm" onClick={startNewGame}>New Number</button>
             <form onSubmit={handleSubmit}>
               <input
