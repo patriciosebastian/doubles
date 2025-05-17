@@ -39,6 +39,19 @@ h1 {
   line-height: 1.1;
 }
 
+/* Chrome, Safari, Edge, Opera */
+form input::-webkit-outer-spin-button,
+form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+form input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
