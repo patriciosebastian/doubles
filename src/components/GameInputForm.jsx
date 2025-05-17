@@ -15,9 +15,9 @@ function GameInputForm({
     <div className='text-center'>
       <p className='text-lg sm:text-2xl inline mr-4'>
         Current Number:{" "}
-        <span className='font-semibold'>{formatNumber(number)}</span>
+        <span className='font-semibold underline'>{formatNumber(number)}</span>
       </p>
-      <button className='bg-transparent mb-4 text-sm' onClick={startNewGame}>
+      <button className='mb-4 text-sm' onClick={startNewGame}>
         New Number
       </button>
       <form onSubmit={handleSubmit}>

@@ -60,7 +60,7 @@ function GameOverScreen({
       >
         Share Your Score
       </button>
-      <p className='text-left pl-20 w-fit text-stone-400 hidden md:block'>
+      <p className='text-left pl-[6.5rem] w-fit text-stone-400 hidden md:block'>
         Or Press Enter &#8629;
       </p>
     </div>
