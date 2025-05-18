@@ -360,7 +360,7 @@ function App() {
                 <label className='block text-lg md:text-xl text-blue-300'>
                   Timer Mode:
                 </label>
-                <div className='text-blue-100'>
+                <div className='text-blue-100 space-y-1'>
                   <label className='block'>
                     <input
                       type='radio'
@@ -369,7 +369,7 @@ function App() {
                       onChange={() => handleModeChange("easy")}
                       className='mr-2 text-blue-500 focus:ring-blue-500'
                     />
-                    Easy (10s ⏱️⏱️⏱️)
+                    Easy (<span className="font-bold">10s</span> - ⏱️⏱️⏱️)
                   </label>
                   <label className='block'>
                     <input
@@ -379,7 +379,7 @@ function App() {
                       onChange={() => handleModeChange("medium")}
                       className='mr-2 text-blue-500 focus:ring-blue-500'
                     />
-                    Medium (8s ⏱️⏱️)
+                    Medium (<span className="font-bold">8s</span> - ⏱️⏱️)
                   </label>
                   <label className='block'>
                     <input
@@ -389,7 +389,7 @@ function App() {
                       onChange={() => handleModeChange("hard")}
                       className='mr-2 text-blue-500 focus:ring-blue-500'
                     />
-                    Hard (6s ⏱️- Default)
+                    Hard (<span className="font-bold">6s</span> - ⏱️ Default)
                   </label>
                   <label className='block'>
                     <input
@@ -399,7 +399,7 @@ function App() {
                       onChange={() => handleModeChange("legendary")}
                       className='mr-2 text-blue-500 focus:ring-blue-500'
                     />
-                    Legendary (4s 🤯)
+                    Legendary (<span className="font-bold">4s</span> - 🤯)
                   </label>
                 </div>
               </div>
