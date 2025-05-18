@@ -298,7 +298,7 @@ function App() {
 
   return (
     <>
-      <div className='relative flow-root'>
+      <div className='relative mb-28'>
         <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-green-500 drop-shadow-lg'>
           Doubles
         </h1>
@@ -510,7 +510,7 @@ function App() {
 
       {/* Footer */}
       <footer
-        className='text-center text-white text-sm mt-auto'
+        className={`text-center text-white text-sm mt-auto ${!gameOver ? 'mt-52' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small>
           copyright 2024-present Doubles by{" "}
