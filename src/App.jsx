@@ -7,13 +7,13 @@ import Footer from "./components/Footer";
 
 function App() {
   const [number, setNumber] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [doublesCount, setDoublesCount] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [timer, setTimer] = useState(6);
   const [timerStarted, setTimerStarted] = useState(false);
-  const [customStart, setCustomStart] = useState("");
+  const [customStart, setCustomStart] = useState('');
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(null);
   const [mode, setMode] = useState(null);
@@ -26,8 +26,8 @@ function App() {
   const detailsRef = useRef(null);
 
   useEffect(() => {
-    const storedHighScore = localStorage.getItem("highScore");
-    const storedMode = localStorage.getItem("mode");
+    const storedHighScore = localStorage.getItem('highScore');
+    const storedMode = localStorage.getItem('mode');
 
     if (storedHighScore) {
       setHighScore(parseInt(storedHighScore, 10));
@@ -37,8 +37,8 @@ function App() {
       setMode(storedMode);
       applyMode(storedMode);
     } else {
-      setMode("hard");
-      applyMode("hard");
+      setMode('hard');
+      applyMode('hard');
     }
 
     startNewGame();
@@ -46,16 +46,16 @@ function App() {
   }, []);
 
   const applyMode = (mode) => {
-    if (mode === "easy") {
+    if (mode === 'easy') {
       setTimer(10);
       getTimeColor();
-    } else if (mode === "medium") {
+    } else if (mode === 'medium') {
       setTimer(8);
       getTimeColor();
-    } else if (mode === "hard") {
+    } else if (mode === 'hard') {
       setTimer(6);
       getTimeColor();
-    } else if (mode === "evil") {
+    } else if (mode === 'evil') {
       setTimer(4);
       getTimeColor();
     }
@@ -83,44 +83,40 @@ function App() {
   // Toggle settings menu visibility
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (
-        settingsRef.current &&
-        !settingsRef.current.contains(e.target) &&
-        !gearIconRef.current.contains(e.target)
-      ) {
+      if (settingsRef.current && !settingsRef.current.contains(e.target) && !gearIconRef.current.contains(e.target)) {
         setSettingsVisible(false);
       }
     };
 
     if (settingsVisible) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [settingsVisible]);
 
   // Start new game on 'Enter' key press
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (gameOver && e.key === "Enter") {
+      if (gameOver && e.key === 'Enter') {
         startNewGame();
       }
     };
 
     const timeoutId = setTimeout(() => {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     }, 1000);
 
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
     // eslint-disable-next-line
   }, [gameOver]);
@@ -128,34 +124,32 @@ function App() {
   // Toggle Replay dropdown on space bar key press
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (gameOver && e.key === " ") {
+      if (gameOver && e.key === ' ') {
         e.preventDefault();
 
         if (detailsRef.current) {
           if (detailsRef.current.open) {
-            detailsRef.current.removeAttribute("open");
+            detailsRef.current.removeAttribute('open');
           } else {
-            detailsRef.current.setAttribute("open", true);
+            detailsRef.current.setAttribute('open', true);
           }
         }
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+      window.removeEventListener('keydown', handleKeyDown);
+    }
   }, [gameOver]);
 
   const startNewGame = () => {
     // Reset state and figure out starting number
-    const startingNumber = customStart
-      ? parseInt(customStart)
-      : getRandomStartingNumber();
+    const startingNumber = customStart ? parseInt(customStart) : getRandomStartingNumber();
     setNumber(startingNumber);
     setDoublesCount(0);
-    setInputValue("");
+    setInputValue('');
     setGameOver(false);
     applyMode(mode);
     setTimerStarted(false);
@@ -190,7 +184,7 @@ function App() {
     if (parseInt(inputValue) === doubledValue) {
       setNumber(doubledValue);
       setDoublesCount(doublesCount + 1);
-      setInputValue("");
+      setInputValue('');
       applyMode(mode);
       setTimerStarted(true); // Timer restarts after correct answer
       setAnswers([...answers, { value: doubledValue, isCorrect: true }]);
@@ -198,13 +192,10 @@ function App() {
       setCorrectAnswer(doubledValue);
       setGameModeAtEnd(mode);
       setGameOver(true);
-      setAnswers([
-        ...answers,
-        { value: parseInt(inputValue), isCorrect: false },
-      ]);
+      setAnswers([...answers, { value: parseInt(inputValue), isCorrect: false }]);
       if (doublesCount > highScore) {
         setHighScore(doublesCount);
-        localStorage.setItem("highScore", doublesCount);
+        localStorage.setItem('highScore', doublesCount);
       }
     }
   };
@@ -212,7 +203,7 @@ function App() {
   const handleModeChange = (mode) => {
     setMode(mode);
     applyMode(mode);
-    localStorage.setItem("mode", mode);
+    localStorage.setItem('mode', mode);
   };
 
   const handleShareScore = () => {
@@ -227,13 +218,13 @@ function App() {
     let timerModeEmoji;
 
     // Set the emoji based on the selected mode
-    if (gameModeAtEnd === "easy") {
+    if (gameModeAtEnd === 'easy') {
       timerModeEmoji = easyModeEmoji;
-    } else if (gameModeAtEnd === "medium") {
+    } else if (gameModeAtEnd === 'medium') {
       timerModeEmoji = mediumModeEmoji;
-    } else if (gameModeAtEnd === "hard") {
+    } else if (gameModeAtEnd === 'hard') {
       timerModeEmoji = hardModeEmoji;
-    } else if (gameModeAtEnd === "evil") {
+    } else if (gameModeAtEnd === 'evil') {
       timerModeEmoji = evilModeEmoji;
     }
 
@@ -251,13 +242,12 @@ function App() {
       shareMessage += ` ${failureEmoji}`;
     }
 
-    const gameUrl = "https://playdoubles.org";
+    const gameUrl = 'https://playdoubles.org';
     shareMessage += `\n\nPlay here: ${gameUrl}`;
 
-    navigator.clipboard
-      .writeText(shareMessage)
-      .then(() => alert("Results copied to clipboard!"))
-      .catch((err) => console.error("Error copying text: ", err));
+    navigator.clipboard.writeText(shareMessage)
+      .then(() => alert('Results copied to clipboard!'))
+      .catch((err) => console.error('Error copying text: ', err));
   };
 
   const handleCustomStartChange = (e) => {
@@ -271,36 +261,36 @@ function App() {
   };
 
   const clearCustomStart = () => {
-    setCustomStart("");
+    setCustomStart('');
     setNumber(getRandomStartingNumber());
   };
 
   // Timer color based on mode and time left
   const getTimeColor = () => {
-    if (mode === "easy") {
-      if (timer > 5) return "green-500";
-      if (timer > 2) return "yellow-500";
-      return "red-500";
+    if (mode === 'easy') {
+      if (timer > 5) return 'green-500';
+      if (timer > 2) return 'yellow-500';
+      return 'red-500';
     }
 
-    if (mode === "medium") {
-      if (timer > 5) return "green-500";
-      if (timer > 2) return "yellow-500";
-      return "red-500";
+    if (mode === 'medium') {
+      if (timer > 5) return 'green-500';
+      if (timer > 2) return 'yellow-500';
+      return 'red-500';
     }
 
-    if (mode === "hard") {
-      if (timer > 3) return "green-500";
-      if (timer > 1) return "yellow-500";
-      return "red-500";
+    if (mode === 'hard') {
+      if (timer > 3) return 'green-500';
+      if (timer > 1) return 'yellow-500';
+      return 'red-500';
     }
 
-    if (mode === "evil") {
-      if (timer > 2) return "green-500";
-      if (timer > 0) return "yellow-500";
-      return "red-500";
+    if (mode === 'evil') {
+      if (timer > 2) return 'green-500';
+      if (timer > 0) return 'yellow-500';
+      return 'red-500';
     }
-  };
+  }
 
   // Toggle settings visibility
   const toggleSettingsVisibility = () => {
