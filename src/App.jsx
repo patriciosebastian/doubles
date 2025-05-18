@@ -50,7 +50,7 @@ function App() {
     } else if (mode === 'hard') {
       setTimer(6);
       getTimeColor();
-    } else if (mode === 'evil') {
+    } else if (mode === 'legendary') {
       setTimer(4);
       getTimeColor();
     }
@@ -208,7 +208,7 @@ function App() {
     const easyModeEmoji = "⏱️⏱️⏱️";
     const mediumModeEmoji = "⏱️⏱️";
     const hardModeEmoji = "⏱️";
-    const evilModeEmoji = "👿";
+    const legendaryEmoji = "🤯";
 
     let timerModeEmoji;
 
@@ -219,8 +219,8 @@ function App() {
       timerModeEmoji = mediumModeEmoji;
     } else if (gameModeAtEnd === 'hard') {
       timerModeEmoji = hardModeEmoji;
-    } else if (gameModeAtEnd === 'evil') {
-      timerModeEmoji = evilModeEmoji;
+    } else if (gameModeAtEnd === 'legendary') {
+      timerModeEmoji = legendaryEmoji;
     }
 
     let shareMessage = `I doubled numbers ${doublesCount} times in Doubles!\n`;
@@ -280,7 +280,7 @@ function App() {
       return 'red-500';
     }
 
-    if (mode === 'evil') {
+    if (mode === 'legendary') {
       if (timer > 2) return 'green-500';
       if (timer > 0) return 'yellow-500';
       return 'red-500';
@@ -394,12 +394,12 @@ function App() {
                   <label className='block'>
                     <input
                       type='radio'
-                      value='evil'
-                      checked={mode === "evil"}
-                      onChange={() => handleModeChange("evil")}
+                      value='legendary'
+                      checked={mode === "legendary"}
+                      onChange={() => handleModeChange("legendary")}
                       className='mr-2 text-blue-500 focus:ring-blue-500'
                     />
-                    Evil (4s 👿)
+                    Legendary (4s 🤯)
                   </label>
                 </div>
               </div>
@@ -510,7 +510,7 @@ function App() {
 
       {/* Footer */}
       <footer
-        className={`text-center text-white ${!gameOver ? 'mt-52' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
+        className={`text-center text-white ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small className="block">
           Comments or questions? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
