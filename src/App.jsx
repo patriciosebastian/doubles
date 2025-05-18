@@ -441,7 +441,7 @@ function App() {
               <summary className='hover:cursor-pointer font-semibold'>
                 Your Replay
               </summary>
-              <small className='text-blue-400 dark:text-stone-600 block mb-4'>
+              <small className='hidden text-blue-400 dark:text-stone-600 mb-4 lg:block'>
                 you can toggle this dropdown with the space bar
               </small>
               <div className='border rounded bg-gray-700 dark:bg-stone-700 dark:border-transparent text-black dark:text-white'>
