@@ -513,10 +513,10 @@ function App() {
         className={`text-center text-white ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small className="block">
-          Comments or questions? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
+          Comments or feedback? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
         </small>
         <small>
-          copyright 2024-present Doubles by{" "}
+          &copy; 2024-present Doubles by{" "}
           <a
             href='https://patriciosalazar.dev'
             target='_blank'
