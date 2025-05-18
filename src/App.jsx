@@ -510,7 +510,7 @@ function App() {
 
       {/* Footer */}
       <footer
-        className={`text-center text-white text-sm mt-auto ${!gameOver ? 'mt-52' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
+        className={`text-center text-white text-sm ${!gameOver ? 'mt-52' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small>
           copyright 2024-present Doubles by{" "}
