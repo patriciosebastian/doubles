@@ -4,12 +4,56 @@
     <meta charset="UTF-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/.svg" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doubles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Doubles - Mental-math speed game</title>
+    <meta name="description" content="Doubles is a fast, minimalist mental-math game: type the double of every random number as quickly as you can without messing up.">
+    <link rel="canonical" href="https://playdoubles.org/" />
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://playdoubles.org" />
+    <meta property="og:title"       content="Doubles – Mental-math speed game" />
+    <meta property="og:description" content="Can you keep doubling numbers under pressure? Beat your streak and share your score." />
+    <meta property="og:site_name"   content="Doubles" />
+    <meta property="og:image"       content="https://nsdysbxlabtmtxscxqvw.supabase.co/storage/v1/object/public/personal-website/Doubles/Doubles_opt.png" />
+    <meta property="og:image:width"  content="1418" />
+    <meta property="og:image:height" content="917" />
+    <meta property="og:locale"      content="en_US" />
+
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Doubles – Mental-math speed game" />
+    <meta name="twitter:description" content="Can you keep doubling numbers under pressure? Beat your streak and share your score." />
+    <meta name="twitter:image"       content="https://nsdysbxlabtmtxscxqvw.supabase.co/storage/v1/object/public/personal-website/Doubles/Doubles_opt.png" />
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    </noscript>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#242424" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Doubles",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web",
+        "url": "https://playdoubles.org/",
+        "screenshot": "https://nsdysbxlabtmtxscxqvw.supabase.co/storage/v1/object/public/personal-website/Doubles/Doubles_opt.png",
+        "description": "Fast, minimalist mental-math game – double the numbers as long as you can without errors.",
+        "inLanguage": "en"
+      }
+    </script>
   </head>
-  <body class="relative">
+  <body class="relative dark:bg-[#242424]">
     <div class="relative w-fit mx-auto flex flex-col" id="root"></div>
-    
+    <div
+      class="absolute inset-0 h-full w-full -z-10 bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,transparent_75%,#000_75%)]"
+    ></div>
+
     <script type="module" src="/src/main.jsx"></script>
     <!-- Cloudflare Web Analytics -->
       <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a58995f1fce44c948bb5d77e5d7954ec"}'></script>

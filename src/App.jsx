@@ -305,7 +305,7 @@ function App() {
         <div className='ml-auto absolute right-0 top-1/2 transform -translate-y-1/2 z-30'>
           <button
             onClick={toggleSettingsVisibility}
-            className='border-none mr-2 focus:outline-blue-500 focus:ring-0 hover:outline hover:outline-1 hover:outline-blue-500 lg:mr-4 dark:bg-transparent'
+            className='bg-transparent border-none mr-2 focus:outline-blue-500 focus:ring-0 hover:outline hover:outline-1 hover:outline-blue-500 lg:mr-4'
             ref={gearIconRef}
           >
             <svg
