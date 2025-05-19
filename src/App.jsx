@@ -299,13 +299,13 @@ function App() {
   return (
     <>
       <div className='relative mb-28'>
-        <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-green-500 drop-shadow-lg'>
+        <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-[#213547] drop-shadow-lg'>
           Doubles
         </h1>
         <div className='ml-auto absolute right-0 top-1/2 transform -translate-y-1/2 z-30'>
           <button
             onClick={toggleSettingsVisibility}
-            className='text-gray-100 bg-transparent focus:outline-none focus:ring-0'
+            className='border-none mr-2 focus:outline-blue-500 focus:ring-0 hover:outline hover:outline-1 hover:outline-blue-500 lg:mr-4'
             ref={gearIconRef}
           >
             <svg
@@ -314,7 +314,7 @@ function App() {
               viewBox='0 0 24 24'
               strokeWidth='1.5'
               stroke='currentColor'
-              className='w-6 h-6'
+              className='w-8 h-8'
             >
               <path
                 strokeLinecap='round'
@@ -331,17 +331,17 @@ function App() {
 
           {settingsVisible && (
             <div
-              className='mt-5 bg-gray-900 p-6 rounded absolute right-0 shadow-lg w-64 z-20 lg:w-[23rem] text-blue-100'
+              className='mt-5 bg-gray-200 p-6 rounded absolute right-2 shadow-lg w-64 z-20 lg:w-[23rem] lg:right-4'
               ref={settingsRef}
             >
-              <label className='block text-lg md:text-xl text-blue-300'>
+              <label className='block text-lg md:text-xl'>
                 Choose a fixed starting number:
               </label>
               <input
                 type='number'
                 value={customStart}
                 onChange={handleCustomStartChange}
-                className='border border-blue-400 p-2 rounded mt-2 w-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                className='border border-blue-400 p-2 rounded mt-2 w-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
                 placeholder='Enter a starting number'
               />
               <button
@@ -357,19 +357,19 @@ function App() {
                 Clear Starting Number
               </button>
               <div className='timer-modes mt-4'>
-                <label className='block text-lg md:text-xl text-blue-300'>
+                <label className='block text-lg md:text-xl'>
                   Timer Mode:
                 </label>
-                <div className='text-blue-100 space-y-1'>
+                <div className='space-y-1'>
                   <label className='block'>
                     <input
                       type='radio'
                       value='easy'
                       checked={mode === "easy"}
                       onChange={() => handleModeChange("easy")}
-                      className='mr-2 text-blue-500 focus:ring-blue-500'
+                      className='mr-2 focus:ring-blue-500'
                     />
-                    Easy (<span className="font-bold">10s</span> - ⏱️⏱️⏱️)
+                    Easy <span className="font-bold">10s</span> &nbsp; <span className="absolute right-6">⏱️⏱️⏱️</span>
                   </label>
                   <label className='block'>
                     <input
@@ -377,9 +377,9 @@ function App() {
                       value='medium'
                       checked={mode === "medium"}
                       onChange={() => handleModeChange("medium")}
-                      className='mr-2 text-blue-500 focus:ring-blue-500'
+                      className='mr-2 focus:ring-blue-500'
                     />
-                    Medium (<span className="font-bold">8s</span> - ⏱️⏱️)
+                    Medium <span className="font-bold">8s</span> &nbsp; <span className="absolute right-6">⏱️⏱️</span>
                   </label>
                   <label className='block'>
                     <input
@@ -387,9 +387,9 @@ function App() {
                       value='hard'
                       checked={mode === "hard"}
                       onChange={() => handleModeChange("hard")}
-                      className='mr-2 text-blue-500 focus:ring-blue-500'
+                      className='mr-2 focus:ring-blue-500'
                     />
-                    Hard (<span className="font-bold">6s</span> - ⏱️ Default)
+                    Hard <span className="font-bold">6s</span> (default) &nbsp; <span className="absolute right-6">⏱️</span>
                   </label>
                   <label className='block'>
                     <input
@@ -397,9 +397,9 @@ function App() {
                       value='legendary'
                       checked={mode === "legendary"}
                       onChange={() => handleModeChange("legendary")}
-                      className='mr-2 text-blue-500 focus:ring-blue-500'
+                      className='mr-2 focus:ring-blue-500'
                     />
-                    Legendary (<span className="font-bold">4s</span> - 🤯)
+                    Legendary <span className="font-bold">4s</span> &nbsp; <span className="absolute right-6">🤯</span>
                   </label>
                 </div>
               </div>
@@ -413,7 +413,7 @@ function App() {
         >
           {timer}s
         </p>
-        <p className='mb-24 text-blue-200 text-base sm:text-lg'>Start typing</p>
+        <p className='mb-24 text-gray-500 text-base sm:text-lg'>Start typing</p>
 
         {gameOver ? (
           <div className='text-center p-6 bg-gray-800 bg-opacity-70 rounded-lg shadow-xl'>
@@ -479,14 +479,14 @@ function App() {
           </div>
         ) : (
           <div className='text-center space-y-6'>
-            <p className='text-xl inline mr-4 text-blue-300 align-middle lg:text-3xl'>
+            <p className='text-xl inline mr-4 align-middle lg:text-3xl'>
               Current Number:{" "}
-              <span className='font-bold text-blue-100'>
+              <span className='font-bold underline'>
                 {formatNumber(number)}
               </span>
             </p>
             <button
-              className='mb-4 text-sm border bg-[#1a1a1a] border-gray-400 dark:border-blue-400 text-gray-100 rounded px-2 py-1 transition-colors duration-200 !mt-0 align-middle focus:outline-none focus:ring-0'
+              className='mb-4 text-sm border bg-[#1a1a1a] border-gray-400 dark:border-blue-400 text-white rounded px-2 py-1 transition-colors duration-200 !mt-0 align-middle focus:outline-none focus:ring-0 hover:border-blue-500'
               onClick={startNewGame}
             >
               New Number
@@ -501,7 +501,7 @@ function App() {
                 ref={inputRef}
               />
             </form>
-            <p className='mt-4 text-lg sm:text-xl text-blue-200'>
+            <p className='mt-4 text-lg sm:text-xl'>
               Streak: {doublesCount}
             </p>
           </div>
@@ -510,7 +510,7 @@ function App() {
 
       {/* Footer */}
       <footer
-        className={`text-center text-white ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
+        className={`text-center ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small className="block">
           Comments or feedback? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
@@ -520,7 +520,7 @@ function App() {
           <a
             href='https://patriciosalazar.dev'
             target='_blank'
-            className='underline text-white hover:text-white'
+            className='text-inherit underline hover:text-inherit'
           >
             Patricio Salazar
           </a>
