@@ -299,13 +299,13 @@ function App() {
   return (
     <>
       <div className='relative mb-28'>
-        <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-[#213547] drop-shadow-lg'>
+        <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-[#213547] drop-shadow-lg dark:text-white'>
           Doubles
         </h1>
         <div className='ml-auto absolute right-0 top-1/2 transform -translate-y-1/2 z-30'>
           <button
             onClick={toggleSettingsVisibility}
-            className='border-none mr-2 focus:outline-blue-500 focus:ring-0 hover:outline hover:outline-1 hover:outline-blue-500 lg:mr-4'
+            className='border-none mr-2 focus:outline-blue-500 focus:ring-0 hover:outline hover:outline-1 hover:outline-blue-500 lg:mr-4 dark:bg-transparent'
             ref={gearIconRef}
           >
             <svg
@@ -331,7 +331,7 @@ function App() {
 
           {settingsVisible && (
             <div
-              className='mt-5 bg-gray-200 p-6 rounded absolute right-2 shadow-lg w-64 z-20 lg:w-[23rem] lg:right-4'
+              className='mt-5 bg-gray-200 p-6 rounded absolute right-2 shadow-lg w-64 z-20 lg:w-[23rem] lg:right-4 dark:text-black'
               ref={settingsRef}
             >
               <label className='block text-lg md:text-xl'>
@@ -341,7 +341,7 @@ function App() {
                 type='number'
                 value={customStart}
                 onChange={handleCustomStartChange}
-                className='border border-blue-400 p-2 rounded mt-2 w-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                className='border border-blue-400 p-2 rounded mt-2 w-full placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-white'
                 placeholder='Enter a starting number'
               />
               <button
@@ -478,7 +478,7 @@ function App() {
             </p>
           </div>
         ) : (
-          <div className='text-center space-y-6'>
+          <div className='text-center space-y-6 dark:text-white'>
             <p className='text-xl inline mr-4 align-middle lg:text-3xl'>
               Current Number:{" "}
               <span className='font-bold underline'>
@@ -510,7 +510,7 @@ function App() {
 
       {/* Footer */}
       <footer
-        className={`text-center ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
+        className={`text-center dark:text-white ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
         <small className="block">
           Comments or feedback? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
