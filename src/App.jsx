@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router'
 
 function App() {
   const [number, setNumber] = useState(null);
@@ -510,8 +511,11 @@ function App() {
 
       {/* Footer */}
       <footer
-        className={`text-center dark:text-white ${!gameOver ? 'mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
+        className={`text-center dark:text-white ${!gameOver ? 'mt-40 lg:mt-48' : ''} ${isDetailsOpen ? '' : 'mt-16'}`}
       >
+        <small className="block">
+          <Link to="/privacy-policy" className="text-inherit hover:text-inherit hover:underline">Privacy Policy</Link> | <Link to="/terms" className="text-inherit hover:text-inherit hover:underline">Terms and Conditions</Link>
+        </small>
         <small className="block">
           Comments or feedback? <a href="mailto:psalazardev@gmail.com" className="text-inherit underline hover:text-inherit" target="_blank">Email here</a>
         </small>

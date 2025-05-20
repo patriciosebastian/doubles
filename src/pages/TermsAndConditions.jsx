@@ -1,10 +1,10 @@
-import { Link } from "react-router";
+import { Link } from "react-router"
 import BreadCrumbs from "../components/BreadCrumbs"
 
 export default function TermsAndConditions() {
   const paths = [
     { name: 'Home', url: '/' },
-    { name: 'TermsAndConditions', url: '' },
+    { name: 'Terms and Conditions', url: '' },
   ];
 
   return (

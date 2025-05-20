@@ -3,7 +3,7 @@ import BreadCrumbs from "../components/BreadCrumbs"
 export default function PrivacyPolicy() {
   const paths = [
     { name: 'Home', url: '/' },
-    { name: 'PrivacyPolicy', url: '' },
+    { name: 'Privacy Policy', url: '' },
   ];
 
   return (
