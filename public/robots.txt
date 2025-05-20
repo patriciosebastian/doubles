@@ -1,0 +1,11 @@
+# robots.txt – PlayDoubles.org
+# Last updated: 2025-05-20
+
+# ============================================================
+# 1. Universal rules
+# ------------------------------------------------------------
+User-agent: *
+Allow: /
+
+# 2. Sitemap location
+Sitemap: https://playdoubles.org/sitemap.xml
