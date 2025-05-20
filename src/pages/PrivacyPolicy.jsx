@@ -1,7 +1,19 @@
+import BreadCrumbs from "../components/BreadCrumbs"
+
 export default function PrivacyPolicy() {
+  const paths = [
+    { name: 'Home', url: '/' },
+    { name: 'PrivacyPolicy', url: '' },
+  ];
+
   return (
     <div className="w-4/5 mx-auto mb-12">
-      <h1 className="mt-28 mb-1">Privacy Policy</h1>
+      <BreadCrumbs
+        paths={paths}
+        className="mt-28 mb-12"
+      />
+
+      <h1 className="mb-1">Privacy Policy</h1>
       <p className="mb-8">Last updated: May 20, 2025</p>
       <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
       <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
