@@ -303,6 +303,7 @@ function App() {
         <h1 className='text-5xl sm:text-6xl md:text-7xl font-extrabold text-center mt-8 mb-8 text-[#213547] drop-shadow-lg dark:text-white'>
           Doubles
         </h1>
+        <Link to="/how-to-play" className='absolute bottom-1 left-1/2 -translate-x-1/2 text-inherit hover:text-inherit hover:underline'>How to Play?</Link>
         <div className='ml-auto absolute right-0 top-1/2 transform -translate-y-1/2 z-30'>
           <button
             onClick={toggleSettingsVisibility}
