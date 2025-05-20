@@ -482,7 +482,7 @@ function App() {
           <div className='text-center space-y-6 dark:text-white'>
             <p className='text-xl inline mr-4 align-middle lg:text-3xl'>
               Current Number:{" "}
-              <span className='font-bold underline'>
+              <span className='font-bold underline underline-offset-4'>
                 {formatNumber(number)}
               </span>
             </p>
