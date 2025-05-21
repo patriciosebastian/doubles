@@ -464,7 +464,7 @@ function App() {
               </div>
             </details>
             <button
-              className='bg-blue-600 text-white px-6 py-3 rounded-lg mr-4 mt-4 sm:mt-0 hover:bg-blue-700 transition-colors duration-200 shadow-md'
+              className='bg-blue-600 text-white px-6 py-3 rounded-lg mt-4 sm:mt-0 hover:bg-blue-700 transition-colors duration-200 shadow-md lg:mr-4'
               onClick={startNewGame}
             >
               Start New Game
@@ -475,7 +475,7 @@ function App() {
             >
               Share Your Score
             </button>
-            <p className='hidden w-fit text-center text-blue-400 text-sm mt-4 lg:block lg:ml-44'>
+            <p className='hidden w-fit text-center text-blue-400 text-sm mt-1 lg:block lg:ml-40'>
               Or Press Enter &#8629;
             </p>
           </div>
